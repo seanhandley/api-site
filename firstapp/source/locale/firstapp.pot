@@ -869,7 +869,7 @@ msgstr ""
 
 #: ../durability.rst:538
 msgid ""
-"https://github.com/fog/fog/blob/master/lib/fog/openstack/docs/storage.md"
+"https://github.com/fog/fog-openstack/blob/master/lib/fog/openstack/docs/storage.md"
 msgstr ""
 
 #: ../durability.rst:542
@@ -1084,7 +1084,7 @@ msgstr ""
 
 #: ../getting_started.rst:83
 msgid ""
-"https://github.com/fog/fog/blob/master/lib/fog/openstack/docs/"
+"https://github.com/fog/fog-openstack/blob/master/lib/fog/openstack/docs/"
 "getting_started.md"
 msgstr ""
 
