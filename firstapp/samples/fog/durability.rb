@@ -3,6 +3,7 @@ require 'fog/openstack'
 require 'digest/md5'
 require 'net/http'
 require 'json'
+require 'openuri'
 
 # step-1
 auth_username = "your_auth_username"
@@ -79,6 +80,20 @@ extra = {
 #TBC
 
 # step-14
-#TBC
+
+def chunked_file_upload(swift, container_name, object_name, file_path)
+  chunk_size  = 1024
+  offset      = 0
+  swift.put_object(container_name, object_name, nil) do
+    chunk = IO.read(file_path, chunk_size, offset)
+    offset += chunk_size
+    chunk ? chunk : ''
+  end
+end
+
+object_name = "very_large_file"
+file_path   = "very_large_file"
+
+object  = chunked_file_upload(swift, container_name, object_name, file_path)
 
 # step-15
