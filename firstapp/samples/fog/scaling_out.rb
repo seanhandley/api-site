@@ -23,6 +23,8 @@ worker_group     = conn.security_groups.create name:        "worker",
 controller_group = conn.security_groups.create name:        "control",
                                                description: "for services that run on a control node"
 
+# There is no controller node - why?
+
 services_group   = conn.security_groups.create name:        "services",
                                                description: "for DB and AMQP services only"
 
@@ -62,7 +64,7 @@ rules = [
     ip_protocol:     "tcp",
     from_port:       5672,
     to_port:         5672,
-    group:           worker_group.id
+    # group:           worker_group.id
   },
   {
     parent_group_id: services_group.id,
@@ -75,21 +77,21 @@ rules = [
     ip_protocol:     "tcp",
     from_port:       3306,
     to_port:         3306,
-    group:           api_group.id
+    #group:           api_group.id
   },
   {
     parent_group_id: services_group.id,
     ip_protocol:     "tcp",
     from_port:       5672,
     to_port:         5672,
-    group:           worker_group.id
+    #group:           worker_group.id
   },
   {
     parent_group_id: services_group.id,
     ip_protocol:     "tcp",
     from_port:       5672,
     to_port:         5672,
-    group:           api_group.id
+    #group:           api_group.id
   }
 ]
 rules.each {|rule| conn.security_group_rules.create rule }
